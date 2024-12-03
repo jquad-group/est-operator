@@ -1,0 +1,31 @@
+# permissions for end users to edit estissuers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: estissuer-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: est-operator
+    app.kubernetes.io/part-of: est-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: estissuer-editor-role
+rules:
+- apiGroups:
+  - certmanager.jquad.rocks
+  resources:
+  - estissuers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - certmanager.jquad.rocks
+  resources:
+  - estissuers/status
+  verbs:
+  - get

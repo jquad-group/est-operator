@@ -1,0 +1,27 @@
+# permissions for end users to view estissuers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: estissuer-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: est-operator
+    app.kubernetes.io/part-of: est-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: estissuer-viewer-role
+rules:
+- apiGroups:
+  - certmanager.jquad.rocks
+  resources:
+  - estissuers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - certmanager.jquad.rocks
+  resources:
+  - estissuers/status
+  verbs:
+  - get
