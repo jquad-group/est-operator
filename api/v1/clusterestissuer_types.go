@@ -17,7 +17,6 @@ limitations under the License.
 package v1
 
 import (
-	"github.com/cert-manager/issuer-lib/api/v1alpha1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -30,30 +29,9 @@ type ClusterEstIssuer struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   EstIssuerSpec         `json:"spec,omitempty"`
-	Status v1alpha1.IssuerStatus `json:"status,omitempty"`
+	Spec   EstIssuerSpec   `json:"spec,omitempty"`
+	Status EstIssuerStatus `json:"status,omitempty"`
 }
-
-func (vi *ClusterEstIssuer) GetStatus() *v1alpha1.IssuerStatus {
-	return &vi.Status
-}
-
-// GetIssuerTypeIdentifier returns a string that uniquely identifies the
-// issuer type. This should be a constant across all instances of this
-// issuer type. This string is used as a prefix when determining the
-// issuer type for a Kubernetes CertificateSigningRequest resource based
-// on the issuerName field. The value should be formatted as follows:
-// "<issuer resource (plural)>.<issuer group>". For example, the value
-// "simpleclusterissuers.issuer.cert-manager.io" will match all CSRs
-// with an issuerName set to eg. "simpleclusterissuers.issuer.cert-manager.io/issuer1".
-func (vi *ClusterEstIssuer) GetIssuerTypeIdentifier() string {
-	// ACTION REQUIRED: Change this to a unique string that identifies your issuer
-	return "clusterestissuers.certmanager.jquad.rocks"
-}
-
-// issuer-lib requires that we implement the Issuer interface
-// so that it can interact with our Issuer resource.
-var _ v1alpha1.Issuer = &ClusterEstIssuer{}
 
 //+kubebuilder:object:root=true
 

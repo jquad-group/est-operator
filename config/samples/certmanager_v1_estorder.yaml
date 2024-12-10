@@ -1,0 +1,9 @@
+apiVersion: certmanager.jquad.rocks/v1
+kind: EstOrder
+metadata:
+  labels:
+    app.kubernetes.io/name: est-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: estorder-sample
+spec:
+  # TODO(user): Add fields here

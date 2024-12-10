@@ -1,0 +1,21 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: test-cert
+spec:
+  commonName: test-est.jquad.rocks
+  subject:
+    organizations:
+      - jquad
+  isCA: false
+  usages:
+    - server auth
+    - client auth
+  dnsNames:
+    - test-est.jquad.rocks
+  secretName: test-cert-tls
+  issuerRef:
+    name: estissuer-sample
+    group: certmanager.jquad.rocks
+    kind: EstIssuer

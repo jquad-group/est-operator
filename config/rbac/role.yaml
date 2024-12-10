@@ -56,3 +56,29 @@ rules:
   - get
   - patch
   - update
+- apiGroups:
+  - certmanager.jquad.rocks
+  resources:
+  - estorders
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - certmanager.jquad.rocks
+  resources:
+  - estorders/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - certmanager.jquad.rocks
+  resources:
+  - estorders/status
+  verbs:
+  - get
+  - patch
+  - update

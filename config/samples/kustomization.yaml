@@ -2,4 +2,5 @@
 resources:
 - certmanager_v1_estissuer.yaml
 - certmanager_v1_clusterestissuer.yaml
+- certmanager_v1_estorder.yaml
 #+kubebuilder:scaffold:manifestskustomizesamples

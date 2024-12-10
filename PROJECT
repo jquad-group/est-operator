@@ -25,4 +25,18 @@ resources:
   kind: ClusterEstIssuer
   path: github.com/jquad-group/est-operator/api/v1
   version: v1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: jquad.rocks
+  group: certmanager
+  kind: EstOrder
+  path: github.com/jquad-group/est-operator/api/v1
+  version: v1
+- controller: true
+  domain: jquad.rocks
+  group: certmanager
+  kind: CertManagerCertificateRequest
+  version: v1
 version: "3"

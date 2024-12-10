@@ -1,0 +1,27 @@
+# permissions for end users to view estorders.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: estorder-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: est-operator
+    app.kubernetes.io/part-of: est-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: estorder-viewer-role
+rules:
+- apiGroups:
+  - certmanager.jquad.rocks
+  resources:
+  - estorders
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - certmanager.jquad.rocks
+  resources:
+  - estorders/status
+  verbs:
+  - get
